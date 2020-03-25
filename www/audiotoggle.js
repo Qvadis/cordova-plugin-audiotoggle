@@ -1,6 +1,7 @@
 var exec = require('cordova/exec');
 
 exports.BLUETOOTH = 'bluetooth';
+exports.INCALL = 'incall';
 exports.SPEAKER = 'speaker';
 exports.EARPIECE = 'earpiece';
 exports.NORMAL = 'normal';
