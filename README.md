@@ -7,7 +7,6 @@ Cordova plugin for switching between speaker and earpiece when playing audio.
 ### Supported Platforms
 
 - Android
-- iOS
 
 ### Usage
 

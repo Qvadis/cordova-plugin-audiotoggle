@@ -14,20 +14,6 @@
     <clobbers target="AudioToggle" />
   </js-module>
 
-  <platform name="ios">
-    <config-file target="config.xml" parent="/*">
-      <feature name="AudioTogglePlugin">
-        <param name="ios-package" value="AudioTogglePlugin" />
-      </feature>
-    </config-file>
-
-    <header-file src="src/ios/AudioTogglePlugin.h" />
-    <source-file src="src/ios/AudioTogglePlugin.m" />
-
-    <framework src="AVFoundation.framework" />
-    <framework src="AudioToolbox.framework" />
-  </platform>
-
   <platform name="android">
     <source-file src="src/android/com/dooble/audiotoggle/AudioTogglePlugin.java" target-dir="src/com/dooble/audiotoggle" />
 
