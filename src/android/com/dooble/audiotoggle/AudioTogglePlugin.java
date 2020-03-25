@@ -137,7 +137,13 @@ public class AudioTogglePlugin extends CordovaPlugin {
       audioManager.startBluetoothSco();
       audioManager.setSpeakerphoneOn(false);
       return true;
-    } else if (mode.equals("earpiece")) {
+    } else if (mode.equals("incall")) {        
+		audioManager.setMode(AudioManager.MODE_IN_CALL);
+		audioManager.stopBluetoothSco();
+      	audioManager.setBluetoothScoOn(false);
+		audioManager.setSpeakerphoneOn(false);
+		return true;
+	} else if (mode.equals("earpiece")) {
       audioManager.setMode(AudioManager.MODE_IN_COMMUNICATION);
       audioManager.stopBluetoothSco();
       audioManager.setBluetoothScoOn(false);
