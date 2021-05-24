@@ -20,6 +20,7 @@ public class AudioTogglePlugin extends CordovaPlugin {
   public static final String ACTION_SET_SPEAKER_ON = "setSpeakerphoneOn";
   public static final String ACTION_GET_OUTPUT_DEVICES = "getOutputDevices";
   public static final String ACTION_GET_AUDIO_MODE = "getAudioMode";
+  public static final String ACTION_GET_AUDIO_SYSTEM = "getAudioSystem";
   public static final String ACTION_IS_SPEAKER_ON = "isSpeakerphoneOn";
   public static final String ACTION_IS_BLUETOOTH_ON = "isBluetoothScoOn";
   public static final String ACTION_HAS_EARPIECE = "hasBuiltInEarpiece";
@@ -58,7 +59,10 @@ public class AudioTogglePlugin extends CordovaPlugin {
     } else if (action.equals(ACTION_HAS_SPEAKER)) {
       callbackContext.success(hasBuiltInSpeaker().toString());
       return true;
-    }
+    } else if (action.equals(ACTION_GET_AUDIO_SYSTEM)) {
+      callbackContext.success(getAudioSystem().toString());
+	  return true;
+	}
 
     callbackContext.error("Invalid action");
     return false;
@@ -215,6 +219,22 @@ public class AudioTogglePlugin extends CordovaPlugin {
     }
 
     return "normal";
+  }
+
+  public String getAudioSystem() {
+    final Context context = webView.getContext();
+    final AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+
+	switch (audioManager.getRingerMode()) {
+		case AudioManager.RINGER_MODE_SILENT:
+			return "RINGER_MODE_SILENT";
+		case AudioManager.RINGER_MODE_VIBRATE:
+			return "RINGER_MODE_VIBRATE";
+		case AudioManager.RINGER_MODE_NORMAL:
+			return "RINGER_MODE_NORMAL";
+	}
+
+	return "unknown";
   }
 
   public Boolean isBluetoothScoOn() {

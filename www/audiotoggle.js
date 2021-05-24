@@ -39,6 +39,10 @@ exports.getAudioMode = function (callback) {
   cordova.exec(callback, null, 'AudioTogglePlugin', 'getAudioMode', []);
 };
 
+exports.getAudioSystem = function (callback) {
+  cordova.exec(callback, null, 'AudioTogglePlugin', 'getAudioSystem', []);
+};
+
 exports.isBluetoothScoOn = function (callback) {
 	cordova.exec(callback, null, 'AudioTogglePlugin', 'isBluetoothScoOn', []);
 };
